@@ -9,7 +9,6 @@ const Header = () => {
 
     const [burgerStatus,setBurgerStatus] = useState(false);
     const cars = useSelector(selectCars)
-    console.log(cars)
     return (
         <Container>
             <a href="">
@@ -17,7 +16,7 @@ const Header = () => {
             </a>
             <Menu>
             {cars && cars.map((car,index)=>
-                <a href="#">{car}</a>
+               ( <a key={index} href="#">{car}</a>)
             )}
             </Menu>
 
@@ -31,7 +30,14 @@ const Header = () => {
             <CloseWrapper>
             <CustomClose onClick={() => setBurgerStatus(false) }/>
             </CloseWrapper>
-                <li><a href="#">Existing Inventory</a></li>
+
+           
+            {cars && cars.map((car,index)=>
+               ( <li key={index}><a href="#">{car}</a></li> )
+            )}
+
+
+                
                 <li><a href="#">Used Inventory</a></li>
                 <li><a href="#">Trade-in</a></li>
                 <li><a href="#">Cybertruck</a></li>
